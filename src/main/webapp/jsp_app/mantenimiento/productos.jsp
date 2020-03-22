@@ -44,29 +44,7 @@
     <div class="page-container">
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
-            <div class="sidebar-header">
-                <div class="logo">
-                    <a href="index.html"><img src="<%out.print(getServletContext().getContextPath()); %>/assets/images/icon/logo.png" alt="logo"></a>
-                </div>
-                <br>
-                <h6 class="text-center" style="color: aliceblue"><i class="fa fa-user"></i> <strong>JCode</strong></h6>
-            </div>
-            <div class="main-menu">
-                <div class="menu-inner">
-                    <nav>
-                        <ul class="metismenu" id="menu">
-                            <li class="active"><a href="index.html"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-                            <li>
-                                <a href="javascript:void(0)"><i class="fa fa-tag"></i><span>Mantenimientos</span></a>
-                                <ul class="collapse">
-                                    <li><a href=""><i class="fa fa-cubes"></i> Categorias</a></li>
-                                    <li><a href=""><i class="fa fa-archive"></i> Productos</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+            <jsp:include page="../../menu.jsp"/>
         </div>
         <!-- sidebar menu area end -->
         <!-- main content area start -->
@@ -101,23 +79,23 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h6>Categorias</h6>
-                                <form id="FrmCategoria">
+                                <h6>Productos</h6>
+                                <form id="FrmProducto">
                                     <div class="row mt-3">
                                         <div class="form-group col-sm-9 col-12">
                                             <input type="text"
-                                                   id="txtNombreCategoria"
-                                                   name ="txtNombreCategoria"
+                                                   id="txtNombreProducto"
+                                                   name ="txtNombreProducto"
                                                    class="form-control form-control-sm"
                                                    placeholder="Nombre"
                                                    />
                                         </div>
                                          <div class="form-group col-sm-3 col-12">
-                                             <button type="submit" class="btn btn-primary btn-xs mr-3">
+                                             <button type="submit" class="btn btn-primary btn-xs mr-3" id="btnBuscarProducto">
                                                  <i class="fa fa-search" aria-hidden="true"></i>
                                                  Buscar
                                              </button>
-                                             <button  class="btn btn-primary btn-xs">
+                                             <button  class="btn btn-primary btn-xs" id="btnAgregarProducto">
                                                  <i class="fa fa-plus" aria-hidden="true"></i>
                                                  
                                              </button>
@@ -132,10 +110,14 @@
                                                 <thead class="bg-primary">
                                                     <tr class="text-white">
                                                     <th>Nombre</th>
+                                                    <th>Precio</th>
+                                                    <th>Stock</th>
+                                                    <th>Stock Minimo</th>
+                                                    <th>Stock Maximo</th>
                                                     <th style="width: 15%">Acciones</th>
                                                 </tr>    
                                                 </thead>
-                                                <tbody id="tbodyCategoria">
+                                                <tbody id="tbodyProducto">
                                                     
                                                 </tbody>
                                                 
@@ -145,7 +127,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3 col-12">
-                                        <select id="sizePageCategoria" name="sizePageCategoria"
+                                        <select id="sizePageProducto" name="sizePageProducto"
                                                 class="form-control form-control-sm">
                                             <option value="10">10</option>
                                             <option value="15">15</option>
@@ -154,7 +136,7 @@
                                     </div>
                                     <div class="col-md-9 col-12">
                                         <nav>
-                                            <ul id="paginationCategoria" class="pagination pagination-sm justify-content"></ul>
+                                            <ul id="paginationProducto" class="pagination pagination-sm justify-content"></ul>
                                         </nav>
                                         
                                     </div>
@@ -170,11 +152,7 @@
         </div>
         <!-- main content area end -->
         <!-- footer area start-->
-        <footer>
-            <div class="footer-area">
-                <p>© Copyright 2018 <a href="https://colorlib.com/wp/">JCode</a>.</p>
-            </div>
-        </footer>
+        <jsp:include page="../../footer.jsp"/>
         <!-- footer area end-->
     </div>
     <!-- page container area end -->

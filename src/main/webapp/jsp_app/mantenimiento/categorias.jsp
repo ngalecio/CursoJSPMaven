@@ -13,7 +13,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>My App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="<%out.print(getServletContext().getContextPath()); %>/assets/images/icon/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="<%out.print(getServletContext().getContextPath()); %>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%out.print(getServletContext().getContextPath()); %>/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="<%out.print(getServletContext().getContextPath()); %>/assets/css/themify-icons.css">
@@ -44,7 +44,8 @@
     <div class="page-container">
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
-            <jsp:include page="menu.jsp"/>
+
+                    <jsp:include page="../../menu.jsp"/>
         </div>
         <!-- sidebar menu area end -->
         <!-- main content area start -->
@@ -75,14 +76,81 @@
             </div>
             <!-- header area end -->
             <div class="main-content-inner">
-
+                <div class="row" style="padding-top: 30px">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>Categorias</h6>
+                                <form id="FrmCategoria">
+                                    <div class="row mt-3">
+                                        <div class="form-group col-sm-9 col-12">
+                                            <input type="text"
+                                                   id="txtNombreCategoria"
+                                                   name ="txtNombreCategoria"
+                                                   class="form-control form-control-sm"
+                                                   placeholder="Nombre"
+                                                   />
+                                        </div>
+                                         <div class="form-group col-sm-3 col-12">
+                                             <button type="submit" class="btn btn-primary btn-xs mr-3" id="btnBuscarCategoria">
+                                                 <i class="fa fa-search" aria-hidden="true"></i>
+                                                 Buscar
+                                             </button>
+                                             <button  class="btn btn-primary btn-xs" id="btnAgregarCategoria">
+                                                 <i class="fa fa-plus" aria-hidden="true"></i>
+                                                 
+                                             </button>
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-bordered">
+                                                <thead class="bg-primary">
+                                                    <tr class="text-white">
+                                                    <th>Nombre</th>
+                                                    <th style="width: 15%">Acciones</th>
+                                                </tr>    
+                                                </thead>
+                                                <tbody id="tbodyCategoria">
+                                                    
+                                                </tbody>
+                                                
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-12">
+                                        <select id="sizePageCategoria" name="sizePageCategoria"
+                                                class="form-control form-control-sm">
+                                            <option value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-9 col-12">
+                                        <nav>
+                                            <ul id="paginationCategoria" class="pagination pagination-sm justify-content"></ul>
+                                        </nav>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
             </div>
         </div>
-        <!-- main content area end  -->
+        <!-- main content area end -->
         <!-- footer area start-->
-
-
-        <jsp:include page="footer.jsp" />  
+        <jsp:include page="../../footer.jsp"/>
+        
         <!-- footer area end-->
     </div>
     <!-- page container area end -->
