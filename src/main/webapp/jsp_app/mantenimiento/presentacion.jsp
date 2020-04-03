@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.util.Iterator"%>
-<%@page import="Modelo.Categoria"%>
+<%@page import="Modelo.Presentacion"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,8 +34,8 @@
     <script src="<%out.print(getServletContext().getContextPath()); %>/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
     <%   
-        ArrayList<Categoria> listacategorias= ModeloDAO.CategoriaDAO.listar();
-        Iterator<Categoria> it = listacategorias.iterator();
+        ArrayList<Presentacion> listapresentacion= ModeloDAO.PresentacionDAO.listar();
+        Iterator<Presentacion> it = listapresentacion.iterator();
 
     %>
 <body>
@@ -87,28 +87,28 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h6>Categorias</h6>
-                                <input type="hidden" id="actionCategoria" name="action" value="paginarCategoria">
-                                <form id="FrmCategoria">
+                                <h6>Presentacions</h6>
+                                <input type="hidden" id="actionPresentacion" name="action" value="paginarPresentacion">
+                                <form id="FrmPresentacion">
                                     <div class="row mt-3">
                                         <div class="form-group col-sm-9 col-12">
                                             <input type="text"
-                                                   id="txtNombreCategoria"
-                                                   name ="txtNombreCategoria"
+                                                   id="txtNombrePresentacion"
+                                                   name ="txtNombrePresentacion"
                                                    class="form-control form-control-sm"
                                                    placeholder="Nombre"
                                                    />
                                         </div>
                                          <div class="form-group col-sm-3 col-12">
-                                             <button type="submit" class="btn btn-primary btn-xs mr-3" id="btnBuscarCategoria">
+                                             <button type="submit" class="btn btn-primary btn-xs mr-3" id="btnBuscarPresentacion">
                                                  <i class="fa fa-search" aria-hidden="true"></i>
                                                  Buscar
                                              </button>
-                                             <button  type="button" class="btn btn-primary btn-xs" id="btnAgregarCategoria">
+                                             <button  type="button" class="btn btn-primary btn-xs" id="btnAgregarPresentacion">
                                                  <i class="fa fa-plus" aria-hidden="true"></i>
                                                  
                                              </button>
-                                             <button type="button" id="btnAbrirNCategoria" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Agregar Categoria"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                             <button type="button" id="btnAbrirNPresentacion" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Agregar Presentacion"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                              <button type="button" id="btnRecorrer" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Recorrer"><i class="fa fa-tasks" aria-hidden="true"></i></button>
                                         </div>
                                     </div>
@@ -117,8 +117,8 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="table-responsive">
-                                            <table class="table table-hover table-bordered" id="id_tabla_categoria">
-                                                <thead class="bg-secondary">
+                                            <table class="table table-hover table-bordered" id="id_tabla_presentacion">
+                                                <thead class="bg-primary">
                                                     <tr class="text-white">
                                                         <th style="width: 10%">ID</th>
                                                         <th style="width: 10%">DNI</th>
@@ -127,20 +127,20 @@
                                                         <th style="width: 10%">Acciones</th>
                                                 </tr>    
                                                 </thead>
-                                                <tbody id="tbodyCategoria">
+                                                <tbody id="tbodyPresentacion">
                                                       <% while(it.hasNext()) {
-                                                          Categoria cat= it.next();
+                                                          Presentacion cat= it.next();
                     
                 %>
-                <tr codigoCategoria="<%=cat.getCodigo() %>" nombreCategoria="<%=cat.getNombre() %>" 
+                <tr codigoPresentacion="<%=cat.getCodigo() %>" nombrePresentacion="<%=cat.getNombre() %>" 
                     grupo="<%=cat.getNombre()+" g" %>"
                     style="height:20px">
                     <td><%= cat.getCodigo() %></td>    
                     <td><%= cat.getCodigo() %></td>    
                     <td><%= cat.getNombre() %></td>    
                     <td class="text-center">
-                        <button class='btn btn-warning btn-xs editar-Categoria'><i class='fa fa-edit'></i>Editar</button>
-                        <button class='btn btn-danger btn-xs eliminar-Categoria'><i class='fa fa-trash'></i>Eliminar</button>
+                        <button class='btn btn-warning btn-xs editar-Presentacion'><i class='fa fa-edit'></i>Editar</button>
+                        <button class='btn btn-danger btn-xs eliminar-Presentacion'><i class='fa fa-trash'></i>Eliminar</button>
                         
                     </td>
                     													<td>
@@ -172,7 +172,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3 col-12">
-                                        <select id="sizePageCategoria" name="sizePageCategoria"
+                                        <select id="sizePagePresentacion" name="sizePagePresentacion"
                                                 class="form-control form-control-sm">
                                             <option value="10">10</option>
                                             <option value="15">15</option>
@@ -181,7 +181,7 @@
                                     </div>
                                     <div class="col-md-9 col-12">
                                         <nav>
-                                            <ul id="paginationCategoria" class="pagination pagination-sm justify-content"></ul>
+                                            <ul id="paginationPresentacion" class="pagination pagination-sm justify-content"></ul>
                                         </nav>
                                         
                                     </div>
@@ -197,12 +197,12 @@
         </div>
         <!-- main content area end -->
         <!-- footer area start-->
-                    <div id="ventanaModalManCategoria" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+                    <div id="ventanaModalManPresentacion" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <form id="FrmCategoriaModal">
+                        <form id="FrmPresentacionModal">
                             <div class="modal-header">
-                                <h6 class="modal-title" id="tituloModalManCategoria"></h6>
+                                <h6 class="modal-title" id="tituloModalManPresentacion"></h6>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -210,12 +210,12 @@
                             <div class="modal-body">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="txtNombreCategoriaER">NOMBRE</label>
-                                        <input type="text" id="txtNombreCategoriaER" name="txtNombreCategoriaER" class="form-control form-control-sm" placeholder="NOMBRE">
-                                        <div class="error-validation" id="validarNombreCategoriaER">Ingrese Categoria</div>
+                                        <label for="txtNombrePresentacionER">NOMBRE</label>
+                                        <input type="text" id="txtNombrePresentacionER" name="txtNombrePresentacionER" class="form-control form-control-sm" placeholder="NOMBRE">
+                                        <div class="error-validation" id="validarNombrePresentacionER">Ingrese Presentacion</div>
                                     </div>
                                 </div>
-                                <input type="hidden" id="txtIdCategoriaER" name="txtIdCategoriaER" value="">
+                                <input type="hidden" id="txtIdPresentacionER" name="txtIdPresentacionER" value="">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal">CERRAR</button>
@@ -260,7 +260,7 @@
     <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/utilities.js"></script>
     <script src="<%out.print(getServletContext().getContextPath());%>/js_app/view/jquery.Pagination.min.js"></script>
       <script src="<%out.print(getServletContext().getContextPath());%>/js_app/view/sweetalert.min.js"></script>
-    <script src="<%out.print(getServletContext().getContextPath());%>/js_app/app/categorias.js"></script>
+    <script src="<%out.print(getServletContext().getContextPath());%>/js_app/app/presentacion.js"></script>
 </body>
 
 </html>

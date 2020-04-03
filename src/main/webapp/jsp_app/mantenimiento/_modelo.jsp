@@ -90,6 +90,24 @@
                                 <h6>Categorias</h6>
                                 <input type="hidden" id="actionCategoria" name="action" value="paginarCategoria">
                                 <form id="FrmCategoria">
+                                    <div class="row mt-3">                                        
+                                         <button type="button" id="btnFileBase64" class="btn btn-primary btn-xs" data-toggle="tooltip" 
+                                                 title="Agregar Categoria"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                            <a class="link" href="">sdsdsdsd</a>
+                                        <input type="file" name="id_foto" id="id_foto" value="" 
+                                               accept="image/x-png,image/gif,image/jpeg" 
+                                               onchange="encodeImagetoBase64(this)">                                        
+                                        <textarea id="textobase64" name="textobase64" rows="10" cols="60">
+                                        </textarea>
+                                        <img id="my_image" src="" 
+                                             style="width:300px;height:200px;"
+                                             />
+                                        
+                                    
+                                        
+                                        
+                                    </div>
+                                    
                                     <div class="row mt-3">
                                         <div class="form-group col-sm-9 col-12">
                                             <input type="text"
@@ -103,6 +121,11 @@
                                              <button type="submit" class="btn btn-primary btn-xs mr-3" id="btnBuscarCategoria">
                                                  <i class="fa fa-search" aria-hidden="true"></i>
                                                  Buscar
+                                             </button>
+                                             
+                                              <button type="button" class="btn btn-primary btn-xs mr-3" id="btnSubirFoto">
+                                                 <i class="fa fa-picture-o" aria-hidden="true"></i>
+                                                 Subir foto
                                              </button>
                                              <button  type="button" class="btn btn-primary btn-xs" id="btnAgregarCategoria">
                                                  <i class="fa fa-plus" aria-hidden="true"></i>
@@ -118,7 +141,7 @@
                                     <div class="col-12">
                                         <div class="table-responsive">
                                             <table class="table table-hover table-bordered" id="id_tabla_categoria">
-                                                <thead class="bg-secondary">
+                                                <thead class="bg-primary">
                                                     <tr class="text-white">
                                                         <th style="width: 10%">ID</th>
                                                         <th style="width: 10%">DNI</th>
@@ -144,7 +167,7 @@
                         
                     </td>
                     													<td>
-
+<%out.print("<input type='text' id='txtComentario"+ cat.getCodigo() +"' codigo='"+cat.getCodigo()+"' class='form-control form-control-sm' placeholder='Comentario' comentario='comentario'/>  ");%>    
                                                                             
 															<!--div class="hidden-sm hidden-xs action-buttons">
 																<a class="blue" href="#">
@@ -260,7 +283,7 @@
     <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/utilities.js"></script>
     <script src="<%out.print(getServletContext().getContextPath());%>/js_app/view/jquery.Pagination.min.js"></script>
       <script src="<%out.print(getServletContext().getContextPath());%>/js_app/view/sweetalert.min.js"></script>
-    <script src="<%out.print(getServletContext().getContextPath());%>/js_app/app/categorias.js"></script>
+    <script src="<%out.print(getServletContext().getContextPath());%>/js_app/app/modelo.js"></script>
 </body>
 
 </html>

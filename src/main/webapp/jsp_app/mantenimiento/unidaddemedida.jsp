@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.util.Iterator"%>
-<%@page import="Modelo.Categoria"%>
+<%@page import="Modelo.UnidaddeMedida"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,8 +34,8 @@
     <script src="<%out.print(getServletContext().getContextPath()); %>/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
     <%   
-        ArrayList<Categoria> listacategorias= ModeloDAO.CategoriaDAO.listar();
-        Iterator<Categoria> it = listacategorias.iterator();
+        ArrayList<UnidaddeMedida> listaunidaddemedida= ModeloDAO.UnidaddeMedidaDAO.listar();
+        Iterator<UnidaddeMedida> it = listaunidaddemedida.iterator();
 
     %>
 <body>
@@ -87,28 +87,28 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h6>Categorias</h6>
-                                <input type="hidden" id="actionCategoria" name="action" value="paginarCategoria">
-                                <form id="FrmCategoria">
+                                <h6>UnidaddeMedidas</h6>
+                                <input type="hidden" id="actionUnidaddeMedida" name="action" value="paginarUnidaddeMedida">
+                                <form id="FrmUnidaddeMedida">
                                     <div class="row mt-3">
                                         <div class="form-group col-sm-9 col-12">
                                             <input type="text"
-                                                   id="txtNombreCategoria"
-                                                   name ="txtNombreCategoria"
+                                                   id="txtNombreUnidaddeMedida"
+                                                   name ="txtNombreUnidaddeMedida"
                                                    class="form-control form-control-sm"
                                                    placeholder="Nombre"
                                                    />
                                         </div>
                                          <div class="form-group col-sm-3 col-12">
-                                             <button type="submit" class="btn btn-primary btn-xs mr-3" id="btnBuscarCategoria">
+                                             <button type="submit" class="btn btn-primary btn-xs mr-3" id="btnBuscarUnidaddeMedida">
                                                  <i class="fa fa-search" aria-hidden="true"></i>
                                                  Buscar
                                              </button>
-                                             <button  type="button" class="btn btn-primary btn-xs" id="btnAgregarCategoria">
+                                             <button  type="button" class="btn btn-primary btn-xs" id="btnAgregarUnidaddeMedida">
                                                  <i class="fa fa-plus" aria-hidden="true"></i>
                                                  
                                              </button>
-                                             <button type="button" id="btnAbrirNCategoria" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Agregar Categoria"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                             <button type="button" id="btnAbrirNUnidaddeMedida" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Agregar UnidaddeMedida"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                              <button type="button" id="btnRecorrer" class="btn btn-primary btn-xs" data-toggle="tooltip" title="Recorrer"><i class="fa fa-tasks" aria-hidden="true"></i></button>
                                         </div>
                                     </div>
@@ -117,8 +117,8 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="table-responsive">
-                                            <table class="table table-hover table-bordered" id="id_tabla_categoria">
-                                                <thead class="bg-secondary">
+                                            <table class="table table-hover table-bordered" id="id_tabla_unidaddemedida">
+                                                <thead class="bg-primary">
                                                     <tr class="text-white">
                                                         <th style="width: 10%">ID</th>
                                                         <th style="width: 10%">DNI</th>
@@ -127,20 +127,20 @@
                                                         <th style="width: 10%">Acciones</th>
                                                 </tr>    
                                                 </thead>
-                                                <tbody id="tbodyCategoria">
+                                                <tbody id="tbodyUnidaddeMedida">
                                                       <% while(it.hasNext()) {
-                                                          Categoria cat= it.next();
+                                                          UnidaddeMedida cat= it.next();
                     
                 %>
-                <tr codigoCategoria="<%=cat.getCodigo() %>" nombreCategoria="<%=cat.getNombre() %>" 
+                <tr codigoUnidaddeMedida="<%=cat.getCodigo() %>" nombreUnidaddeMedida="<%=cat.getNombre() %>" 
                     grupo="<%=cat.getNombre()+" g" %>"
                     style="height:20px">
                     <td><%= cat.getCodigo() %></td>    
                     <td><%= cat.getCodigo() %></td>    
                     <td><%= cat.getNombre() %></td>    
                     <td class="text-center">
-                        <button class='btn btn-warning btn-xs editar-Categoria'><i class='fa fa-edit'></i>Editar</button>
-                        <button class='btn btn-danger btn-xs eliminar-Categoria'><i class='fa fa-trash'></i>Eliminar</button>
+                        <button class='btn btn-warning btn-xs editar-UnidaddeMedida'><i class='fa fa-edit'></i>Editar</button>
+                        <button class='btn btn-danger btn-xs eliminar-UnidaddeMedida'><i class='fa fa-trash'></i>Eliminar</button>
                         
                     </td>
                     													<td>
@@ -172,7 +172,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3 col-12">
-                                        <select id="sizePageCategoria" name="sizePageCategoria"
+                                        <select id="sizePageUnidaddeMedida" name="sizePageUnidaddeMedida"
                                                 class="form-control form-control-sm">
                                             <option value="10">10</option>
                                             <option value="15">15</option>
@@ -181,7 +181,7 @@
                                     </div>
                                     <div class="col-md-9 col-12">
                                         <nav>
-                                            <ul id="paginationCategoria" class="pagination pagination-sm justify-content"></ul>
+                                            <ul id="paginationUnidaddeMedida" class="pagination pagination-sm justify-content"></ul>
                                         </nav>
                                         
                                     </div>
@@ -197,12 +197,12 @@
         </div>
         <!-- main content area end -->
         <!-- footer area start-->
-                    <div id="ventanaModalManCategoria" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+                    <div id="ventanaModalManUnidaddeMedida" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <form id="FrmCategoriaModal">
+                        <form id="FrmUnidaddeMedidaModal">
                             <div class="modal-header">
-                                <h6 class="modal-title" id="tituloModalManCategoria"></h6>
+                                <h6 class="modal-title" id="tituloModalManUnidaddeMedida"></h6>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -210,12 +210,12 @@
                             <div class="modal-body">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="txtNombreCategoriaER">NOMBRE</label>
-                                        <input type="text" id="txtNombreCategoriaER" name="txtNombreCategoriaER" class="form-control form-control-sm" placeholder="NOMBRE">
-                                        <div class="error-validation" id="validarNombreCategoriaER">Ingrese Categoria</div>
+                                        <label for="txtNombreUnidaddeMedidaER">NOMBRE</label>
+                                        <input type="text" id="txtNombreUnidaddeMedidaER" name="txtNombreUnidaddeMedidaER" class="form-control form-control-sm" placeholder="NOMBRE">
+                                        <div class="error-validation" id="validarNombreUnidaddeMedidaER">Ingrese UnidaddeMedida</div>
                                     </div>
                                 </div>
-                                <input type="hidden" id="txtIdCategoriaER" name="txtIdCategoriaER" value="">
+                                <input type="hidden" id="txtIdUnidaddeMedidaER" name="txtIdUnidaddeMedidaER" value="">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal">CERRAR</button>
@@ -260,7 +260,7 @@
     <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/utilities.js"></script>
     <script src="<%out.print(getServletContext().getContextPath());%>/js_app/view/jquery.Pagination.min.js"></script>
       <script src="<%out.print(getServletContext().getContextPath());%>/js_app/view/sweetalert.min.js"></script>
-    <script src="<%out.print(getServletContext().getContextPath());%>/js_app/app/categorias.js"></script>
+    <script src="<%out.print(getServletContext().getContextPath());%>/js_app/app/unidaddemedida.js"></script>
 </body>
 
 </html>
